@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <div class="content d-flex justify-content-center">
-  <form action="${pageContext.request.contextPath}/login" method="post" class="w-50">
+  <form action="/login" method="post" class="w-50">
     <h3>로그인</h3>
 
     <div class="mb-3">

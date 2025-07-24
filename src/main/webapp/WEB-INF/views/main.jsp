@@ -108,7 +108,7 @@ html, body {
 
 		<!-- 로그인한 사용자 인사 메시지 -->
 		<c:if test="${not empty loginId}">
-			<p style="color: blue;">${loginId}님, 안녕하세요!</p>
+			
 		</c:if>
 	</section>
 	<jsp:include page="layout/footer.jsp" />

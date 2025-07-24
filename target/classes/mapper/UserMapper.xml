@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.UserMapper">
+
+    <select id="findAll" resultType="model.Users">
+        SELECT id, name, username, email, phone, website FROM users
+    </select>
+
+    <!-- MERGE: Oracle 기준, 다른 DB면 INSERT ... ON DUPLICATE KEY UPDATE -->
+    <insert id="upsertUser" parameterType="model.Users">
+      MERGE INTO users u
+      USING (
+        SELECT
+          #{id} AS id,
+          #{name} AS name,
+          #{username} AS username,
+          #{email} AS email,
+          #{phone} AS phone,
+          #{website} AS website
+        FROM dual
+      ) t
+      ON (u.id = t.id)
+      WHEN MATCHED THEN
+        UPDATE SET
+          u.name = t.name,
+          u.username = t.username,
+          u.email = t.email,
+          u.phone = t.phone,
+          u.website = t.website
+      WHEN NOT MATCHED THEN
+        INSERT (id, name, username, email, phone, website)
+        VALUES (t.id, t.name, t.username, t.email, t.phone, t.website)
+    </insert>
+</mapper>

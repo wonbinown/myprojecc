@@ -6,13 +6,13 @@
 <mapper namespace="mapper.MemberMapper">
 
   <select id="findByUsername" parameterType="string" resultType="model.Member">
-    SELECT id, name, username, password, email
+    SELECT MEMBER_SEQ, name, username, password, email
     FROM member
     WHERE username = #{username}
   </select>
 
   <insert id="insertMember" parameterType="model.Member">
-    INSERT INTO member (id, name, username, password, email)
+    INSERT INTO member (MEMBER_SEQ, name, username, password, email)
     VALUES (member_seq.NEXTVAL, #{name}, #{username}, #{password}, #{email})
   </insert>
 

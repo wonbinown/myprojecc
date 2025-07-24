@@ -26,11 +26,11 @@
     
     <!-- 로그인 설정 -->
     <security:form-login
-        login-page="/main?view=login"
+        login-page="/main"
         login-processing-url="/login"
         username-parameter="username"
         password-parameter="password"
-        authentication-failure-url="/main?view=login&amp;error=true"
+        authentication-failure-url="/main3"
         authentication-success-handler-ref="loginSuccess"/>
     
     <!-- 로그아웃 설정 -->
